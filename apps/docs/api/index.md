@@ -6,6 +6,5 @@
 
 ## Functions
 
-- [add](functions/add.md)
-- [greet](functions/greet.md)
 - [printWorkingDirectory](functions/printWorkingDirectory.md)
+- [reviewDiffsBeforeCommit](functions/reviewDiffsBeforeCommit.md)

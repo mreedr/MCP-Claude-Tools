@@ -9,7 +9,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { SDK_VERSION } from "./index.js";
-import { printWorkingDirectory } from "./tools/review.js";
+import {
+  printWorkingDirectory,
+  reviewDiffsBeforeCommit,
+} from "./tools/review.js";
 
 const server = new McpServer(
   {
@@ -33,6 +36,24 @@ server.registerTool(
   }),
 );
 
+server.registerTool(
+  "reviewDiffsBeforeCommit",
+  {
+    description:
+      "Review the current git diff (staged + unstaged) via Claude Code CLI before commit.",
+    inputSchema: {
+      directory: z
+        .string()
+        .optional()
+        .describe("Working directory (defaults to current process cwd)."),
+    },
+  },
+  async ({ directory }) => {
+    const cwd = directory ?? process.cwd();
+    const text = reviewDiffsBeforeCommit(cwd);
+    return { content: [{ type: "text" as const, text }] };
+  },
+);
 
 async function main(): Promise<void> {
   const transport = new StdioServerTransport();

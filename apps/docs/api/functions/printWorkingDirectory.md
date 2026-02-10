@@ -4,10 +4,10 @@
 
 > **printWorkingDirectory**(`cwd?`): `string`
 
-Defined in: [tools/review.ts:14](https://github.com/mreedr/MCP-Claude-Tools/blob/39fecc8407fd65d8ffb1fe53e56ff3bc2b2ee1a6/packages/sdk/src/tools/review.ts#L14)
+Defined in: [tools/review.ts:18](https://github.com/mreedr/MCP-Claude-Tools/blob/eee4dfb4349b49d597964cf463d7e5492700d547/packages/sdk/src/tools/review.ts#L18)
 
-Runs the Claude CLI to review the current git diff (staged + unstaged) in the project.
-Requires the Claude CLI to be installed and available on PATH.
+Return current working directory. When used from the MCP server, use
+console.error() for debug logs—stdout is reserved for JSON-RPC.
 
 ## Parameters
 
@@ -15,10 +15,6 @@ Requires the Claude CLI to be installed and available on PATH.
 
 `string` = `...`
 
-Working directory for git and Claude (defaults to current process cwd)
-
 ## Returns
 
 `string`
-
-The spawn result; check result.status for exit code
