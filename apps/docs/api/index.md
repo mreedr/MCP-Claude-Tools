@@ -8,4 +8,4 @@
 
 - [add](functions/add.md)
 - [greet](functions/greet.md)
-- [possible\_toole](functions/possible_toole.md)
+- [reviewDiff](functions/reviewDiff.md)

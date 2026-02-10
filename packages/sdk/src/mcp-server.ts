@@ -9,6 +9,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { SDK_VERSION, add, greet } from "./index.js";
+import { printWorkingDirectory } from "./tools/review.js";
 
 const server = new McpServer(
   {
@@ -18,47 +19,20 @@ const server = new McpServer(
   {},
 );
 
-// server.registerTool(
-//   "merge request local "pull request" audit",
-//   "full build and run of all the root commands"
 
 server.registerTool(
-  "greet",
+  "printWorkingDirectory",
   {
-    description: "Return a greeting for the given name.",
+    description: "Return current working directory.",
     inputSchema: {
-      name: z.string().describe("Name to greet"),
-    },
+      directory: z.string().describe("Directory to print working directory of.")
+    }
   },
-  async ({ name }) => ({
-    content: [{ type: "text", text: greet(name) }],
+  async ({ directory }) => ({
+    content: [{ type: "text", text: printWorkingDirectory(directory) }],
   }),
 );
 
-server.registerTool(
-  "add",
-  {
-    description: "Add two numbers together.",
-    inputSchema: {
-      a: z.number().describe("First number"),
-      b: z.number().describe("Second number"),
-    },
-  },
-  async ({ a, b }) => ({
-    content: [{ type: "text", text: String(add(a, b)) }],
-  }),
-);
-
-server.registerTool(
-  "get_sdk_version",
-  {
-    description: "Return the current SDK version.",
-    inputSchema: {},
-  },
-  async () => ({
-    content: [{ type: "text", text: SDK_VERSION }],
-  }),
-);
 
 async function main(): Promise<void> {
   const transport = new StdioServerTransport();
