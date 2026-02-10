@@ -4,7 +4,7 @@
 
 > **add**(`a`, `b`): `number`
 
-Defined in: [index.ts:22](https://github.com/mreedr/MCP-Claude-Tools/blob/faa93734f9c4d9332e0ba2690fd38a8b23bdda49/packages/sdk/src/index.ts#L22)
+Defined in: [index.ts:22](https://github.com/mreedr/MCP-Claude-Tools/blob/bbe25f42164aa4a78d1a10ad25fb20c68525e56a/packages/sdk/src/index.ts#L22)
 
 Add two numbers together.
 

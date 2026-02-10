@@ -8,4 +8,4 @@
 
 - [add](functions/add.md)
 - [greet](functions/greet.md)
-- [reviewDiff](functions/reviewDiff.md)
+- [printWorkingDirectory](functions/printWorkingDirectory.md)

@@ -1,10 +1,10 @@
-[@repo/sdk](../index.md) / reviewDiff
+[@repo/sdk](../index.md) / printWorkingDirectory
 
-# Function: reviewDiff()
+# Function: printWorkingDirectory()
 
-> **reviewDiff**(`cwd?`): `SpawnSyncReturns`\<`string` \| `NonSharedBuffer`\>
+> **printWorkingDirectory**(`cwd?`): `string`
 
-Defined in: tools/review.ts:24
+Defined in: [tools/review.ts:14](https://github.com/mreedr/MCP-Claude-Tools/blob/bbe25f42164aa4a78d1a10ad25fb20c68525e56a/packages/sdk/src/tools/review.ts#L14)
 
 Runs the Claude CLI to review the current git diff (staged + unstaged) in the project.
 Requires the Claude CLI to be installed and available on PATH.
@@ -19,6 +19,6 @@ Working directory for git and Claude (defaults to current process cwd)
 
 ## Returns
 
-`SpawnSyncReturns`\<`string` \| `NonSharedBuffer`\>
+`string`
 
 The spawn result; check result.status for exit code
