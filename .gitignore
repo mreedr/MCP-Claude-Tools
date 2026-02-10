@@ -24,3 +24,6 @@ cache/
 # Changeset (keep config and changelog)
 .changeset/*.md
 !.changeset/README.md
+
+.claude/
+.cursor/
