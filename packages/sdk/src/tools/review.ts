@@ -12,7 +12,7 @@ const REVIEW_PROMPT =
  */
 
 export function printWorkingDirectory(cwd: string = process.cwd()): string {
-  console.log("cwd", cwd);
+  console.log("cwdzhelloa");
   return execSync("pwd", {
     encoding: "utf-8",
     cwd,
