@@ -18,6 +18,10 @@ const server = new McpServer(
   {},
 );
 
+// server.registerTool(
+//   "merge request local "pull request" audit",
+//   "full build and run of all the root commands"
+
 server.registerTool(
   "greet",
   {
