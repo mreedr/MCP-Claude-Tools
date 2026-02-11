@@ -1,3 +1,4 @@
+export * from "./tools/commit";
 export * from "./tools/review";
 
 /**

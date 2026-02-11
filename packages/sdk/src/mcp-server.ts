@@ -9,6 +9,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { SDK_VERSION } from "./index.js";
+import { addAndCommitWithClaudeMessage } from "./tools/commit.js";
 import {
   printWorkingDirectory,
   reviewDiffsBeforeCommit,
@@ -52,6 +53,25 @@ server.registerTool(
   async ({ directory }) => {
     const cwd = directory ?? process.cwd();
     const text = reviewDiffsBeforeCommit(cwd);
+    return { content: [{ type: "text" as const, text }] };
+  }
+);
+
+server.registerTool(
+  "addAndCommitWithClaudeMessage",
+  {
+    description:
+      "Stage all changes, ask Claude to generate a short but detailed commit message from the diff, then commit.",
+    inputSchema: {
+      directory: z
+        .string()
+        .optional()
+        .describe("Working directory (defaults to current process cwd)."),
+    },
+  },
+  async ({ directory }) => {
+    const cwd = directory ?? process.cwd();
+    const text = addAndCommitWithClaudeMessage(cwd);
     return { content: [{ type: "text" as const, text }] };
   }
 );
