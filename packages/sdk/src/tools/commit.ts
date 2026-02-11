@@ -70,11 +70,15 @@ export function addAndCommitWithClaudeMessage(
 
   try {
     execSync("git add -A", { encoding: "utf-8", cwd, maxBuffer: MAX_BUFFER });
-    execSync("git", ["commit", "-m", message], {
+    const commitResult = spawnSync("git", ["commit", "-m", message], {
       encoding: "utf-8",
       cwd,
       maxBuffer: MAX_BUFFER,
     });
+    if (commitResult.status !== 0) {
+      const stderr = commitResult.stderr?.trim() ?? "";
+      throw new Error(stderr || `git commit exited with code ${commitResult.status}`);
+    }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     throw new Error(`Git add/commit failed: ${msg}`);
