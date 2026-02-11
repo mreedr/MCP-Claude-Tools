@@ -1,4 +1,4 @@
-# ts-package
+# mcp claude tools
 
 A pnpm monorepo that builds and documents **@repo/sdk**, a TypeScript SDK you can use as a library or expose to AI agents via the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP).
 
