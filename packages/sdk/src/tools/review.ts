@@ -1,5 +1,7 @@
 /// <reference types="node" />
 import { execSync, spawnSync } from "child_process";
+import fs from "fs";
+import path from "path";
 
 const MAX_BUFFER = 10 * 1024 * 1024;
 
@@ -51,8 +53,16 @@ export function reviewDiffsBeforeCommit(cwd: string = process.cwd()): string {
     return "No changes to review.";
   }
 
+  const skillPath = path.join(cwd, ".claude", "skills", "review-code", "SKILL.md");
+
   // haiku model is a good compromise between speed and quality
-  const result = spawnSync("claude", ["--model", "haiku", "-p", REVIEW_BEFORE_COMMIT_PROMPT], {
+  const args = ["--model", "haiku", "-p", REVIEW_BEFORE_COMMIT_PROMPT];
+  if (fs.existsSync(skillPath)) {
+    args.push("--append-system-prompt-file", skillPath);
+  } else {
+    console.error(`Warning: Skill file not found at ${skillPath}; reviewing without it.`);
+  }
+  const result = spawnSync("claude", args, {
     input: diff,
     cwd,
     encoding: "utf-8",
