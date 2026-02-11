@@ -60,9 +60,13 @@ export function addAndCommitWithClaudeMessage(
   }
 
   const rawMessage = (result.stdout ?? "").trim();
-  // Use first line only for the -m to avoid multi-line issues; strip any surrounding quotes
-  const firstLine = rawMessage.split(/\n/)[0]?.trim() ?? rawMessage;
-  const message = firstLine.replace(/^["']|["']$/g, "");
+  // Condense all lines safely into a single commit message; strip any surrounding quotes
+  const condensed = rawMessage
+    .split(/\n/)
+    .map(line => line.trim())
+    .filter(line => !!line)
+    .join(" ");
+  const message = condensed.replace(/^["']|["']$/g, "");
 
   if (!message) {
     throw new Error("Claude did not return a valid commit message.");
