@@ -4,6 +4,6 @@
 
 > `const` **SDK\_VERSION**: `"0.0.1"` = `"0.0.1"`
 
-Defined in: [index.ts:7](https://github.com/mreedr/MCP-Claude-Tools/blob/74caaa9c148d64eff41c9049f514af4c4c28b902/packages/sdk/src/index.ts#L7)
+Defined in: [index.ts:7](https://github.com/mreedr/MCP-Claude-Tools/blob/c8e9fca90d3f6cc13cef15ae7e08b9ab638d567c/packages/sdk/src/index.ts#L7)
 
 @repo/sdk - TypeScript SDK
