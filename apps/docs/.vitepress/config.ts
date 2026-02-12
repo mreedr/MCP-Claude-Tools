@@ -39,16 +39,9 @@ export default defineConfig({
   description: "Documentation for @repo/sdk",
   base: "/",
   themeConfig: {
-    nav: [
-      { text: "Home", link: "/" },
-      { text: "Getting Started", link: "/getting-started" },
-      { text: "MCP Server", link: "/mcp-server" },
-      { text: "API", link: "/api/" },
-    ],
     sidebar: [
-      { text: "Introduction", link: "/" },
-      { text: "Getting Started", link: "/getting-started" },
-      { text: "Running as MCP Server", link: "/mcp-server" },
+      { text: "Install MCP", link: "/" },
+      { text: "Custom Commands", link: "/custom-commands" },
       { text: "API", collapsed: false, items: getApiSidebar() },
     ] as DefaultTheme.SidebarItem[],
   },

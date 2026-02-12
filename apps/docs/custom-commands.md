@@ -1,4 +1,4 @@
-# Getting Started
+# Custom Commands
 
 This page shows how to add a **new MCP command** (tool) to this repo's server.
 

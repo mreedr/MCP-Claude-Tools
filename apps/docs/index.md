@@ -1,6 +1,6 @@
-# Claude Tools MCP Server
+# Installing Claude Tools MCP Server
 
-The claude-cli-mcp can be run as an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server so that other agents (e.g. Cursor, Claude Desktop) can call claude specific workflows which are defined in `sdk/src/mcp-server.ts`.
+The claude-cli-mcp can be run as an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server to connect and define claude specific workflows which are defined in `sdk/src/mcp-server.ts`.
 
 ## Installation (from source)
 
