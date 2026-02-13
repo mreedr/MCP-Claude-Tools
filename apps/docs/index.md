@@ -1,6 +1,6 @@
 # Introducing Claude Tools MCP Server
 
-The claude-cli-mcp can be run as an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server to connect and define claude specific workflows which are defined in `sdk/src/mcp-server.ts`.
+The claude-cli-mcp can be run as an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server to expose Claude-oriented workflows defined in `packages/sdk/src/mcp-server.ts`.
 
 ## Installation (from source)
 
@@ -51,11 +51,11 @@ Restart Cursor to load the new MCP server.
 
 When run as an MCP server, the SDK exposes these tools:
 
-| Tool              | Description                           |
-| ----------------- | ------------------------------------- |
-| `greet`           | Return a greeting for the given name. |
-| `add`             | Add two numbers together.             |
-| `get_sdk_version` | Return the current SDK version.       |
+| Tool                            | Description                                                                                              | Input                                                                                                   |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `printWorkingDirectory`         | Return current working directory.                                                                        | `directory` (string, required): Directory to print working directory of.                               |
+| `reviewDiffsBeforeCommit`       | Review the current git diff (staged + unstaged) via Claude Code CLI before commit.                      | `directory` (string, optional): Working directory (defaults to current process cwd).                   |
+| `addAndCommitWithClaudeMessage` | Stage all changes, ask Claude to generate a short but detailed commit message from the diff, then commit. | `directory` (string, optional): Working directory (defaults to current process cwd).                   |
 
 ## Running the server
 
@@ -124,6 +124,6 @@ Edit your Claude Desktop config (e.g. `~/Library/Application Support/Claude/clau
 
 ## Programmatic use
 
-The `@repo/sdk/mcp-server` export is the built script that starts the server when run with Node. For custom behavior, depend on `@repo/sdk` and `@modelcontextprotocol/sdk` and build your own MCP server that registers tools calling `greet`, `add`, and the rest of the SDK API.
+The `@repo/sdk/mcp-server` export is the built script that starts the server when run with Node. For custom behavior, depend on `@repo/sdk` and `@modelcontextprotocol/sdk` and build your own MCP server that registers tools that call `printWorkingDirectory`, `reviewDiffsBeforeCommit`, `addAndCommitWithClaudeMessage`, or other SDK functions.
 
 
